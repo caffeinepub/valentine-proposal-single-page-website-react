@@ -1,9 +1,16 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Build a Valentine proposal single-page website (HTML/CSS/JS) matching the provided design and interactions.",
-  "architectural_notes": [],
-  "known_issues": [],
+  "projectStateVersion": 17,
+  "summary": "Build a Valentine proposal single-page website (React/Tailwind) with updated theme styling (include pink), include an additional user-provided photo asset, and adjust the “NO” interaction to show cute messages only (no GIF).",
+  "architectural_notes": [
+    "Update REQ-2 behavior: do not embed or display a GIF; only display text-based cute messages during the NO interaction.",
+    "Theme update request: incorporate pink prominently into the site color palette/styling.",
+    "User request: remove the in-page photo upload control (“+ Add photo” option) from the UI.",
+    "Decision: the 3 new static photos should appear in the same existing grid layout under the main image (i.e., replace/populate the current smaller tiles rather than using a new layout)."
+  ],
+  "known_issues": [
+    "Intermittent deployment failure: final deploy step to the Internet Computer network may fail even when the build/code changes are correct; may require retrying deployment."
+  ],
   "isFixRequest": false,
   "existing_features": [
     {
@@ -45,6 +52,118 @@
         "REQ-5"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-photo-s-as-static-frontend-assets-and-display-an-additional-photo-inside-the-main-card-layout-in-addition-to-the-existing-saesha-jpg-image-without-breaking-the-current-image-fallback-behavior",
+      "title": "Add the user-uploaded photo(s) as static frontend assets and display an additional photo inside the main card layout (in addition to the existing /saesha.jpg image), without breaking the current image fallback behavior.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-site-s-visual-theme-from-the-current-valentine-pink-red-gradient-look-to-a-new-coherent-theme-colors-gradients-shadows-and-typography-and-apply-it-consistently-across-the-page-and-buttons-while-keeping-the-existing-overall-layout-and-interactions-intact",
+      "title": "Change the site’s visual theme from the current Valentine pink/red gradient look to a new coherent theme (colors, gradients, shadows, and typography), and apply it consistently across the page and buttons while keeping the existing overall layout and interactions intact.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-embedded-gif-from-the-no-button-interaction-and-replace-the-reaction-area-with-a-cycle-of-cute-english-only-messages-no-gifs-no-external-media-while-keeping-the-no-button-s-playful-movement-behavior",
+      "title": "Remove the embedded GIF from the “NO” button interaction and replace the reaction area with a cycle of cute, English-only messages (no GIFs, no external media), while keeping the NO button’s playful movement behavior.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-visual-theme-to-prominently-use-pink-instead-of-the-current-ocean-blue-teal-theme-across-the-full-page-background-gradient-headings-and-primary-button-styling-while-keeping-the-existing-layout-and-yes-no-interactions-unchanged",
+      "title": "Update the app’s visual theme to prominently use pink (instead of the current ocean blue/teal theme) across the full-page background gradient, headings, and primary button styling, while keeping the existing layout and YES/NO interactions unchanged.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-any-remaining-ocean-blue-teal-theme-tokens-used-by-the-proposal-ui-with-the-new-pink-theme-tokens-including-fallback-placeholder-gradients-for-missing-images-so-the-page-looks-consistently-pink-themed",
+      "title": "Replace any remaining ocean/blue/teal theme tokens used by the proposal UI with the new pink theme tokens, including fallback placeholder gradients for missing images, so the page looks consistently pink-themed.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-in-page-photo-upload-control-that-lets-the-user-add-replace-the-smaller-photo-tiles-shown-under-the-main-saesha-jpg-image-using-local-only-browser-previews-no-backend-storage-the-uploaded-images-must-display-immediately-in-the-existing-grid-layout-and-keep-the-current-graceful-fallback-placeholders-when-no-image-is-provided-or-a-preview-is-cleared",
+      "title": "Add a simple in-page photo upload control that lets the user add/replace the smaller photo tiles shown under the main \"/saesha.jpg\" image, using local-only browser previews (no backend storage). The uploaded images must display immediately in the existing grid layout and keep the current graceful fallback placeholders when no image is provided or a preview is cleared.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-gate-the-currently-hardcoded-extra-photo-filenames-e-g-img-20260208-wa0005-jpg-img-20260208-wa0005-1-jpg-so-the-ui-does-not-rely-on-unknown-files-being-present-in-production-default-to-placeholders-unless-the-user-uploads-photos-or-the-assets-are-explicitly-present",
+      "title": "Remove or gate the currently hardcoded extra photo filenames (e.g., \"/IMG-20260208-WA0005.jpg\", \"/IMG-20260208-WA0005-1.jpg\") so the UI does not rely on unknown files being present in production; default to placeholders unless the user uploads photos or the assets are explicitly present.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-uploaded-image-file-img-20260208-wa0005-3-jpg-as-a-static-frontend-asset-and-display-it-in-the-proposal-card-s-photo-grid-the-two-smaller-photo-tiles-under-saesha-jpg-as-a-default-photo-when-no-local-upload-preview-is-present-without-breaking-the-existing-local-only-upload-replace-behavior-and-placeholder-fallbacks",
+      "title": "Add the uploaded image file \"IMG-20260208-WA0005-3.jpg\" as a static frontend asset and display it in the proposal card’s photo grid (the two smaller photo tiles under \"/saesha.jpg\") as a default photo when no local upload preview is present, without breaking the existing local-only upload/replace behavior and placeholder fallbacks.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-two-newly-uploaded-images-as-static-frontend-assets-img-20260208-wa0008-jpg-and-img-20260208-wa0010-jpg-and-render-them-inside-the-existing-proposal-card-photo-area-without-breaking-the-current-main-image-saesha-jpg-rendering-the-existing-two-tile-upload-preview-behavior-or-any-current-graceful-placeholder-fallbacks",
+      "title": "Add the two newly uploaded images as static frontend assets (IMG-20260208-WA0008.jpg and IMG-20260208-WA0010.jpg) and render them inside the existing proposal card photo area, without breaking the current main image (/saesha.jpg) rendering, the existing two-tile upload/preview behavior, or any current graceful placeholder fallbacks.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-proposal-card-photo-grid-in-frontend-src-app-tsx-to-display-these-3-new-static-photos-as-the-three-smaller-photo-tiles-under-saesha-jpg-and-remove-the-current-dependency-on-local-upload-previews-for-those-tiles",
+      "title": "Update the proposal card photo grid in frontend/src/App.tsx to display these 3 new static photos as the three smaller photo tiles under /saesha.jpg, and remove the current dependency on local upload previews for those tiles.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-in-page-add-photos-replace-photos-upload-control-from-the-proposal-page-ui-including-the-hidden-file-input-upload-clear-buttons-and-any-related-state-hooks-that-are-only-used-for-local-photo-uploads",
+      "title": "Remove the in-page “Add photos/Replace photos” upload control from the proposal page UI, including the hidden file input, upload/clear buttons, and any related state/hooks that are only used for local photo uploads.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-the-existing-proposal-page-layout-and-interactions-intact-but-update-the-photo-grid-under-the-main-saesha-jpg-image-to-display-all-6-newly-uploaded-images-as-the-smaller-tiles-same-grid-style-spacing-rounded-corners-use-a-2-column-grid-with-3-rows-of-small-tiles-under-the-main-image-main-image-still-spans-both-columns",
+      "title": "Keep the existing proposal page layout and interactions intact, but update the photo grid under the main /saesha.jpg image to display all 6 newly uploaded images as the smaller tiles (same grid style/spacing/rounded corners). Use a 2-column grid with 3 rows of small tiles under the main image (main image still spans both columns).",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-in-page-local-photo-upload-functionality-and-its-ui-state-from-the-proposal-page-now-that-the-grid-is-fully-static-remove-the-hidden-input-type-file-element-the-add-photos-replace-photos-button-the-clear-button-and-any-related-local-preview-state-usage-in-frontend-src-app-tsx-if-the-local-preview-hook-is-no-longer-used-anywhere-remove-its-import-usage-and-clean-up-any-now-unused-code",
+      "title": "Remove the in-page local photo upload functionality and its UI/state from the proposal page now that the grid is fully static: remove the hidden <input type=\"file\"> element, the \"Add photos/Replace photos\" button, the clear button, and any related local preview state usage in frontend/src/App.tsx. If the local preview hook is no longer used anywhere, remove its import/usage and clean up any now-unused code.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-preserve-graceful-fallback-behavior-for-missing-images-if-any-of-the-static-photo-assets-including-saesha-jpg-fail-to-load-render-a-visually-consistent-pink-themed-placeholder-tile-that-does-not-break-the-grid-layout",
+      "title": "Preserve graceful fallback behavior for missing images: if any of the static photo assets (including /saesha.jpg) fail to load, render a visually consistent pink-themed placeholder tile that does not break the grid layout.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -52,6 +171,52 @@
       "id": "AR-1",
       "summary": "Create the Valentine proposal website using the provided HTML/CSS/JS (card layout, image, YES/NO buttons with moving NO behavior and YES success message).",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add the user-provided additional photo to the page (include as a static asset and render it in the card layout appropriately).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Change/update the site’s visual theme (colors/typography/styling) from the current romantic gradient/card design to the new requested theme.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Remove the GIF from the “NO” button interaction and replace it with cute messages only when cycling the text.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add two additional user-provided photos to the page (include as static assets and render them in the card layout/photo area appropriately).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Remove the in-page “+ Add photo” upload option/control from the proposal page UI.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add the following uploaded images as static frontend assets in the app’s public assets folder and ensure they are included in the build output: IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, and IMG-20260208-WA0005-5.jpg.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add the 6 newly uploaded images as static frontend assets and ensure they are included in the build output with these exact filenames: IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, IMG-20260208-WA0005-5.jpg, IMG-20260208-WA0008-2.jpg, IMG-20260208-WA0010-2.jpg, IMG-20260208-WA0005-6.jpg.",
+      "reqIds": [
+        "REQ-18"
+      ],
       "status": "pending"
     }
   ],

@@ -1,104 +1,108 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Valentine Proposal Single-Page Website (React)",
+  "title": "Static 6-photo proposal grid and remove local upload UI",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Implement the single-page Valentine proposal UI (gradient background, centered card, image, emojis, copy, and YES/NO buttons) to match the provided HTML/CSS/JS layout and text.",
+      "id": "REQ-18",
+      "summary": "Add the 6 newly uploaded images as static frontend assets with exact filenames and ensure they ship in production builds.",
       "acceptanceCriteria": [
-        "Visiting the app shows a centered card on a full-height gradient background with typography, spacing, and rounded corners closely matching the provided design.",
-        "The card contains: an image at the top, the emoji line “🤗 🌸 💕”, the heading “Hey Saesha 💖”, and the proposal text ending with “Will you be my Valentine? 💘”.",
-        "Buttons display the exact labels “YES 💕” and “NO 🙈” and are visually distinct (pink primary YES, gray NO)."
+        "All 6 image files exist in the frontend static/public assets and are referenced by exact filename (case-sensitive).",
+        "A production build includes the 6 images (no missing asset 404s for these filenames)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/public/assets/IMG-20260208-WA0008-1.jpg",
           "operation": "create",
-          "description": "Create the single-page Valentine proposal view (no routing): full-viewport gradient background, centered white rounded card, top image slot, emoji row, required heading and proposal copy, and distinct YES/NO buttons. If using any shadcn-ui elements for buttons/typography, verify the component's usage instructions before implementing."
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
         },
         {
-          "path": "frontend/src/main.tsx",
-          "operation": "modify",
-          "description": "Ensure the app renders the new single-page App component cleanly and continues importing global styles needed for the Valentine page."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Implement the playful NO interaction: move the NO button randomly on hover/click and cycle funny lines with the provided GIF in the main text area.",
-      "acceptanceCriteria": [
-        "Hovering over NO moves the button to a new random translated position; clicking NO does the same.",
-        "Each NO interaction updates the text area to show the next line in the funnyLines list (looping back after the last).",
-        "The updated text area includes the GIF loaded from https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add React state and event handlers to (1) randomize the NO button position within/near the card (using hover and click) and (2) cycle through the provided funny lines in order, looping, while rendering the provided external GIF within the updated text area."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Implement the YES success state that replaces the card content with the provided celebration emojis, heading, and message signed “Forever yours, Varun ❤️”.",
-      "acceptanceCriteria": [
-        "Clicking YES swaps the card content to the success message view.",
-        "The success view contains the emoji line “🥰💖💍”, the heading “Yay! She said YES 💕”, and the sign-off with “Varun ❤️”.",
-        "After YES is clicked, NO/YES buttons are no longer shown (since the content is replaced)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add a YES-click success state that conditionally renders the success view content and hides/removes the proposal view (including both buttons) after YES is clicked."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Add the top image as a static asset named saesha.jpg and render it with rounded corners; include a graceful fallback if the image fails to load.",
-      "acceptanceCriteria": [
-        "The UI attempts to load and display /saesha.jpg at the top of the card with rounded corners and spacing similar to the provided HTML.",
-        "If /saesha.jpg cannot be loaded, the app displays a visually pleasant placeholder in the same area and the rest of the page still functions."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/saesha.jpg",
+          "path": "frontend/public/assets/IMG-20260208-WA0010-1.jpg",
           "operation": "create",
-          "description": "Add the static top-card image asset named exactly saesha.jpg so it is served at /saesha.jpg."
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
         },
         {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Render /saesha.jpg at the top of the card with full width and rounded corners, and implement an onError-driven fallback placeholder block that preserves the same layout spacing when the image cannot be loaded."
+          "path": "frontend/public/assets/IMG-20260208-WA0005-5.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
+        },
+        {
+          "path": "frontend/public/assets/IMG-20260208-WA0008-2.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
+        },
+        {
+          "path": "frontend/public/assets/IMG-20260208-WA0010-2.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
+        },
+        {
+          "path": "frontend/public/assets/IMG-20260208-WA0005-6.jpg",
+          "operation": "create",
+          "description": "Add the uploaded image as a static public asset so it is included in build output with the exact case-sensitive filename."
         }
       ]
     },
     {
-      "id": "REQ-5",
-      "summary": "Apply a consistent romantic theme using Tailwind conventions: warm pink/red gradient, rounded card, soft shadow, and friendly modern typography with responsive centered layout.",
+      "id": "REQ-19",
+      "summary": "Keep the proposal layout/behaviors intact while updating the grid under /saesha.jpg to a static 2x3 set of the 6 new images.",
       "acceptanceCriteria": [
-        "Background uses a warm pink/red gradient and the card has rounded corners and a soft drop shadow.",
-        "Typography and spacing feel consistent across headings, body text, and buttons (no mismatched default fonts).",
-        "Design remains responsive and centered on common mobile and desktop viewport sizes."
+        "The main /saesha.jpg image remains at the top of the card spanning both columns.",
+        "Exactly 6 smaller photo tiles render under the main image in a 2-column grid (3 rows), using the 6 new uploaded static assets.",
+        "YES/NO buttons behavior and the YES success screen remain unchanged."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "create",
-          "description": "Create the global Tailwind CSS entry (tailwind base/components/utilities) and set a consistent global font stack aligned with the provided design (e.g., Poppins with sensible fallbacks)."
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace the current mixed static+upload-preview tile area with a fully static 2-column grid of 6 small tiles (3 rows) under the existing /saesha.jpg main image, referencing: /assets/IMG-20260208-WA0008-1.jpg, /assets/IMG-20260208-WA0010-1.jpg, /assets/IMG-20260208-WA0005-5.jpg, /assets/IMG-20260208-WA0008-2.jpg, /assets/IMG-20260208-WA0010-2.jpg, /assets/IMG-20260208-WA0005-6.jpg; ensure YES/NO logic and success screen remain unchanged."
         },
         {
-          "path": "frontend/index.html",
+          "path": "frontend/src/components/StaticPhotoTile.tsx",
+          "operation": "create",
+          "description": "Create a small reusable tile component that renders a static image with consistent sizing/rounded corners and can switch to a pink-themed placeholder when the image fails to load; used by App.tsx for the 6 small tiles."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Remove in-page local photo upload UI/state and clean up any unused code tied to local uploads.",
+      "acceptanceCriteria": [
+        "No upload/replace/clear photo controls are visible in the UI.",
+        "frontend/src/App.tsx no longer imports or uses useLocalPhotoTilePreviews, useRef for file input, lucide-react Upload/X icons, or any handlers solely for local photo uploads.",
+        "The app compiles with no unused imports/variables related to local photo upload."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Add required font loading (e.g., Poppins) in the document head so the page typography matches the intended modern friendly style."
+          "description": "Remove the hidden file input, Add/Replace photos button, Clear button, related handlers, and associated local preview state; remove imports for useLocalPhotoTilePreviews, useRef, and lucide-react Upload/X icons if they become unused."
+        },
+        {
+          "path": "frontend/src/hooks/useLocalPhotoTilePreviews.ts",
+          "operation": "delete",
+          "description": "Delete the local photo preview hook if it is no longer referenced anywhere after removing upload functionality, ensuring there are no remaining imports/usages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Preserve graceful fallback placeholders for missing images without breaking the grid layout.",
+      "acceptanceCriteria": [
+        "If a small-tile image fails to load, that tile shows a placeholder with the same sizing/rounded corners as an image tile.",
+        "If /saesha.jpg fails to load, the existing main-image placeholder behavior remains in place.",
+        "No broken layout or console errors caused by image load failures (beyond standard 404s when simulating missing assets)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/StaticPhotoTile.tsx",
+          "operation": "create",
+          "description": "Implement tile-level image error handling (e.g., via onError-driven state) to render a visually consistent pink-themed placeholder while keeping the exact tile dimensions and rounded corners so the 2x3 grid remains intact."
         },
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Refine Tailwind classes to consistently apply the romantic theme (gradient background, rounded card, soft shadow, button styling, and responsive spacing) across all states (default, NO-interaction text updates, YES success). If leveraging shadcn-ui styling conventions, verify the component's usage instructions before implementing."
+          "description": "Wire small-tile rendering through StaticPhotoTile so each of the 6 static assets gracefully falls back to a placeholder on load failure; keep the existing /saesha.jpg main-image fallback unchanged."
         }
       ]
     }

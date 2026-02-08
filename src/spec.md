@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a single-page Valentine proposal experience in React that matches the provided HTML/CSS/JS layout, copy, and button interactions.
+**Goal:** Make the proposal page photo grid fully static by adding the 6 newly uploaded photos to the existing grid layout and removing the local upload/replace UI and related state.
 
 **Planned changes:**
-- Create a full-viewport warm pink/red gradient background with a centered white rounded card, soft shadow, and consistent modern typography using Tailwind styling conventions.
-- Render the card content: top image area, emoji row “🤗 🌸 💕”, heading “Hey Saesha 💖”, proposal paragraph ending with “Will you be my Valentine? 💘”, and two buttons labeled exactly “YES 💕” (pink primary) and “NO 🙈” (gray).
-- Implement the “NO” interaction: on hover or click, move the NO button to a random nearby position and cycle the main text area through the provided funnyLines, including the embedded GIF from https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif.
-- Implement the “YES” success state: clicking YES replaces the entire card content with the provided success emojis, heading, and message ending with “Forever yours, Varun ❤️”, removing both buttons.
-- Add a static frontend asset named exactly `saesha.jpg` and display it at the top of the card with full width and rounded corners; if it fails to load, show a graceful placeholder without breaking layout.
+- Add the 6 newly uploaded images as static frontend assets with the exact filenames: IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, IMG-20260208-WA0005-5.jpg, IMG-20260208-WA0008-2.jpg, IMG-20260208-WA0010-2.jpg, IMG-20260208-WA0005-6.jpg, and ensure they are included in production builds.
+- Update the proposal page grid under the main `/saesha.jpg` image to render exactly 6 smaller tiles (2 columns × 3 rows) using the new static assets, preserving the existing spacing/rounded corners and keeping the main image spanning both columns.
+- Remove all local photo upload UI and related code/state from `frontend/src/App.tsx` (file input, add/replace/clear controls, and any now-unused hooks/imports/handlers tied to local uploads).
+- Preserve graceful fallback behavior: if any static image fails to load, show a pink-themed placeholder tile without breaking the grid layout (including keeping the existing main-image fallback behavior for `/saesha.jpg`).
 
-**User-visible outcome:** Visitors see a romantic proposal card with YES/NO choices; NO playfully dodges while updating messages and showing the GIF, and YES switches to a celebratory success message.
+**User-visible outcome:** The proposal page shows the same layout and YES/NO flow as before, but the photo grid always displays the 6 provided photos (no upload/replace controls), and missing images degrade to consistent placeholders without layout issues.

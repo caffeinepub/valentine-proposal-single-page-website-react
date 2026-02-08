@@ -1,14 +1,16 @@
 {
-  "backend/main.mo": "Empty Motoko actor with no functions defined.",
-  "feature_evidence.json": "Lists feature requirements and associated frontend files for the Valentine proposal app.",
-  "frontend-file-summaries.txt": "Prewritten summaries describing key frontend files and their roles in styling and functionality.",
-  "frontend/index.css": "Global Tailwind and OKLCH color variable setup defining Valentine-themed styling tokens.",
-  "frontend/index.html": "HTML entry point that mounts the React app and loads fonts and main script.",
-  "frontend/src/App.tsx": "Main Valentine proposal UI with YES success state, playful NO button movement, GIF reactions, and image fallback handling.",
-  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor based on Internet Identity, refreshing dependent queries on identity changes.",
-  "frontend/src/hooks/useInternetIdentity.ts": "Internet Identity context provider handling login, stored identities, and related status state.",
-  "frontend/src/index.css": "Tailwind base styles plus Valentine theme variables and Poppins typography setup.",
-  "frontend/src/main.tsx": "App bootstrap that sets up React Query, Internet Identity provider, and renders the main App component.",
-  "frontend/tailwind.config.js": "Configures Tailwind with dark mode, content paths, extensive OKLCH-based color themes, custom radii, shadows, keyframes, and animations using several plugins.",
-  "project_state.json": "Defines the project’s state, including Valentine proposal features, requirements, and pending feature request metadata."
+  "backend/main.mo": "Empty Motoko actor with no methods.",
+  "feature_evidence.json": "Feature evidence report describing three frontend photo‑grid and fallback‑image updates with associated files and test IDs.",
+  "frontend-file-summaries.txt": "Prewritten summaries of major frontend files including App.tsx, styles, Tailwind config, HTML entry, hooks, and StaticPhotoTile.",
+  "frontend/index.css": "Tailwind base styles and OKLCH color variables defining light/dark theme tokens.",
+  "frontend/index.html": "HTML entry point loading main.tsx and setting the Valentine Proposal title and font preconnects.",
+  "frontend/src/App.tsx": "Main React component rendering the Valentine page with a static photo grid, YES/NO interaction, and success screen.",
+  "frontend/src/components/StaticPhotoTile.tsx": "Image tile component that displays a static photo and falls back to a pink placeholder on load error.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages the authenticated or anonymous backend actor and invalidates dependent queries.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Hook and provider managing Internet Identity login, stored identities, and status tracking.",
+  "frontend/src/hooks/useLocalPhotoTilePreviews.ts": "Empty file placeholder for removed local photo preview logic.",
+  "frontend/src/index.css": "Tailwind setup plus font imports and custom pink Valentine theme color variables.",
+  "frontend/src/main.tsx": "App entry mounting React, wrapping with QueryClientProvider and InternetIdentityProvider, and loading global styles.",
+  "frontend/tailwind.config.js": "Configures Tailwind with dark mode, content paths, extended color palette (including pink), custom animations, and additional theme utilities.",
+  "project_state.json": "Stores the project’s current build requirements, theme updates, feature definitions, and known deployment issues."
 }

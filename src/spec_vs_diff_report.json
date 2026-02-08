@@ -1,57 +1,55 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-08T11:16:37.795Z",
-  "summary": "Most frontend Valentine single-page UI and interactions (gradient background, centered card, YES success view, NO moving + GIF/message cycling, image fallback) are implemented in App.tsx with Tailwind theme additions. However, the required static asset saesha.jpg is not shown as added, and unrequested authentication/actor infrastructure and an empty backend canister were introduced despite non-goals/constraints.",
+  "generatedAt": "2026-02-08T12:13:31.216Z",
+  "summary": "The diff updates the proposal grid to render 6 static photo tiles via a new StaticPhotoTile component and removes visible local-upload UI from App.tsx, while adding per-tile fallback placeholders. However, the actual 6 JPG assets requested are not shown as added in the diff summary, and there are unrelated style/config/HTML changes not requested.",
   "missing_requirements": [
     {
-      "id": "REQ-4",
-      "requirement": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation.",
-      "reason": "The UI references \"/saesha.jpg\" and includes an onError fallback, but the diff summary does not show the actual static asset file \"saesha.jpg\" being added anywhere (e.g., frontend/public/saesha.jpg).",
+      "id": "REQ-18",
+      "requirement": "Add the 6 newly uploaded images as static frontend assets and ensure they are included in the build output with these exact filenames.",
+      "reason": "The diff summary does not show any of the six .jpg files being added to the repo (e.g., under a public/static assets directory). App.tsx references them, but their existence/inclusion in the build output cannot be verified from the provided changes.",
       "evidence": [
-        "frontend/src/App.tsx (references src=\"/saesha.jpg\")",
-        "ADDED FILES list (no saesha.jpg present)"
+        "frontend/src/App.tsx (references /assets/IMG-20260208-WA0008-1.jpg आदि)",
+        "File diff summary: Added files list does not include any .jpg assets"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Internet Identity authentication context/provider and related hooks added to the frontend.",
-      "reason": "User accounts/authentication (Internet Identity) is explicitly a non-goal, but the diff adds an InternetIdentityProvider and related hook code, and wraps the app with it.",
+      "description": "Changed the HTML page title and added Google Fonts preconnect/links (Poppins).",
+      "reason": "BuildRequest did not ask for HTML title/font changes; it focused on photo grid assets and removing upload UI/state.",
       "evidence": [
-        "frontend/src/hooks/useInternetIdentity.ts",
-        "frontend/src/main.tsx"
+        "frontend/index.html (per frontend-file-summaries.txt: updated title \"Valentine Proposal 💘\" and Google Fonts links)"
       ]
     },
     {
-      "description": "Actor creation hook and React Query wiring for backend actor access.",
-      "reason": "Not requested by any REQ; also implies backend interaction and identity-based actor creation, which is outside the single-page frontend Valentine experience requirements.",
+      "description": "Tailwind theme/config changes (custom pink palette and shadow).",
+      "reason": "Not requested by REQ-18..REQ-21; the request was to keep layout/interactions intact and only update the grid/remove upload UI.",
       "evidence": [
-        "frontend/src/hooks/useActor.ts",
-        "frontend/src/main.tsx"
+        "frontend/tailwind.config.js (per frontend-file-summaries.txt: extended pink theme palette and shadow)"
       ]
     },
     {
-      "description": "Added an (empty) Motoko backend canister actor.",
-      "reason": "Backend is \"only if needed\"; the Valentine page requirements are purely frontend and do not require a backend. An empty actor was added anyway.",
+      "description": "Additional styling/token changes in global CSS unrelated to the static grid and upload UI removal.",
+      "reason": "Not requested; may risk violating the 'keep existing layout' intent.",
       "evidence": [
-        "backend/main.mo"
+        "frontend/src/index.css (per frontend-file-summaries.txt: global styles/fonts and pink theme tokens)"
+      ]
+    },
+    {
+      "description": "Modified/retained useLocalPhotoTilePreviews hook implementation (supports selecting up to 2 images).",
+      "reason": "REQ-20 focuses on removing local upload functionality from the proposal page; keeping/updating this hook is unrequested work unless it is still used elsewhere (not shown in the diff summary).",
+      "evidence": [
+        "frontend/src/hooks/useLocalPhotoTilePreviews.ts (listed under MODIFIED FILES and described in frontend-file-summaries.txt)"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.72,
   "changed_files": [
-    "all_files_summary.json",
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
     "frontend/src/App.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/components/StaticPhotoTile.tsx",
+    "frontend/src/hooks/useLocalPhotoTilePreviews.ts",
     "project_state.json"
   ]
 }

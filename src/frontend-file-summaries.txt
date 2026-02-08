@@ -1,6 +1,8 @@
 {
-  "frontend/src/App.tsx": "Single-page Valentine proposal component with interactive YES/NO buttons, where NO moves randomly on hover/click and cycles through funny messages, and YES displays a success message.",
-  "frontend/src/index.css": "Global styles with Poppins font family, Tailwind directives, and custom Valentine theme OKLCH color tokens for the romantic pink/red gradient design.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with custom Valentine color palette (primary, secondary, accent) and valentine shadow for the romantic card design.",
-  "frontend/index.html": "HTML entry point with updated title \"Valentine Proposal 💘\" and Google Fonts preconnect links for Poppins font family."
+  "frontend/src/App.tsx": "Single-page Valentine proposal component with interactive YES/NO buttons and a static 2x3 photo grid (6 tiles) displaying the main /saesha.jpg image at the top spanning both columns, followed by 6 smaller static photo tiles using the new uploaded images, with NO button moving randomly on hover/click cycling through cute messages.",
+  "frontend/src/index.css": "Global styles with Quicksand and Nunito font families, Tailwind directives, and custom pink Valentine theme OKLCH color tokens featuring soft pinks and roses for the romantic proposal page.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom pink theme color palette (primary, secondary, accent) and pink shadow with rose/pink tones for the romantic card design.",
+  "frontend/index.html": "HTML entry point with updated title \"Valentine Proposal 💘\" and Google Fonts preconnect links for Poppins font family.",
+  "frontend/src/hooks/useLocalPhotoTilePreviews.ts": "Custom React hook that manages local-only photo tile preview URLs using URL.createObjectURL, supports selecting up to 2 images, clearing previews, and automatically revokes object URLs on replace/clear/unmount to prevent memory leaks.",
+  "frontend/src/components/StaticPhotoTile.tsx": "Reusable photo tile component that renders a static image with consistent sizing and rounded corners, gracefully falling back to a pink-themed placeholder with a heart emoji if the image fails to load."
 }

@@ -1,25 +1,29 @@
 import { useState } from 'react';
 
+import { StaticPhotoTile } from './components/StaticPhotoTile';
+
 function App() {
   const [noClickCount, setNoClickCount] = useState(0);
   const [noPosition, setNoPosition] = useState({ x: 0, y: 0 });
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const funnyLines = [
+  const cuteMessages = [
     "Are you sure? 😼",
-    "Really?? 🙀",
-    "Nice try 😏",
-    "You can't escape 💕",
-    "Come on… say YES 💖"
+    "Really?? Think again! 🙀",
+    "Nice try, but I know you better 😏",
+    "You can't escape this cuteness 💕",
+    "Come on… you know you want to say YES 💖",
+    "My heart is waiting… 🥺",
+    "Pretty please? 🥹✨"
   ];
 
-  const [imageError, setImageError] = useState(false);
+  const [mainImageError, setMainImageError] = useState(false);
 
   const moveNo = () => {
     const x = Math.random() * 240 - 120;
     const y = Math.random() * 120 - 60;
     setNoPosition({ x, y });
-    setNoClickCount((prev) => (prev + 1) % funnyLines.length);
+    setNoClickCount((prev) => (prev + 1) % cuteMessages.length);
   };
 
   const handleYes = () => {
@@ -28,10 +32,10 @@ function App() {
 
   if (showSuccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-valentine-primary via-valentine-secondary to-valentine-accent p-4">
-        <div className="bg-white rounded-[20px] shadow-valentine w-full max-w-[340px] p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-primary via-pink-secondary to-pink-accent p-4">
+        <div className="bg-white rounded-3xl shadow-pink w-full max-w-[340px] p-8 text-center">
           <div className="text-[42px] mb-3">🥰💖💍</div>
-          <h1 className="text-[22px] font-semibold text-valentine-primary mb-4">
+          <h1 className="text-[22px] font-semibold text-pink-primary mb-4">
             Yay! She said YES 💕
           </h1>
           <p className="text-[15px] text-gray-600 leading-relaxed">
@@ -48,23 +52,32 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-valentine-primary via-valentine-secondary to-valentine-accent p-4">
-      <div className="bg-white rounded-[20px] shadow-valentine w-full max-w-[340px] p-6 text-center">
-        {!imageError ? (
-          <img
-            src="/saesha.jpg"
-            alt="Us moment"
-            className="w-full rounded-2xl mb-4"
-            onError={() => setImageError(true)}
-          />
-        ) : (
-          <div className="w-full h-48 bg-gradient-to-br from-pink-100 to-red-100 rounded-2xl mb-4 flex items-center justify-center">
-            <span className="text-4xl">💕</span>
-          </div>
-        )}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-primary via-pink-secondary to-pink-accent p-4">
+      <div className="bg-white rounded-3xl shadow-pink w-full max-w-[340px] p-6 text-center">
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          {!mainImageError ? (
+            <img
+              src="/saesha.jpg"
+              alt="Us moment"
+              className="w-full h-40 object-cover rounded-2xl col-span-2"
+              onError={() => setMainImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-40 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl col-span-2 flex items-center justify-center">
+              <span className="text-4xl">💕</span>
+            </div>
+          )}
+          
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0008-1.jpg" alt="Our memory" />
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0010-1.jpg" alt="Our memory" />
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0005-5.jpg" alt="Our memory" />
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0008-2.jpg" alt="Our memory" />
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0010-2.jpg" alt="Our memory" />
+          <StaticPhotoTile src="/assets/IMG-20260208-WA0005-6.jpg" alt="Our memory" />
+        </div>
         
         <div className="text-[42px] mb-2">🤗 🌸 💕</div>
-        <h1 className="text-[22px] font-semibold text-valentine-primary mb-3">
+        <h1 className="text-[22px] font-semibold text-pink-primary mb-3">
           Hey Saesha 💖
         </h1>
         
@@ -77,21 +90,16 @@ function App() {
           </p>
         ) : (
           <div className="text-[15px] text-gray-600 leading-relaxed mb-6">
-            <strong className="block mb-3">{funnyLines[noClickCount - 1]}</strong>
-            My heart already chose you, Saesha 🥰<br />
-            Stop teasing and say YES already 😌💞<br /><br />
-            <img 
-              src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" 
-              alt="Please say yes"
-              className="inline-block w-[120px] rounded-lg"
-            />
+            <strong className="block mb-3 text-pink-primary text-lg">{cuteMessages[noClickCount - 1]}</strong>
+            <p className="mb-2">My heart already chose you, Saesha 🥰</p>
+            <p>Stop teasing and say YES already 😌💞</p>
           </div>
         )}
 
         <div className="relative h-[70px]">
           <button
             onClick={handleYes}
-            className="absolute left-[35px] px-6 py-2.5 text-base font-medium bg-valentine-primary text-white rounded-full hover:bg-valentine-primary-hover transition-all duration-200 shadow-md hover:shadow-lg"
+            className="absolute left-[35px] px-6 py-2.5 text-base font-medium bg-pink-primary text-white rounded-full hover:bg-pink-primary-hover transition-all duration-200 shadow-md hover:shadow-lg"
           >
             YES 💕
           </button>

@@ -1,172 +1,78 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-08T11:16:37.798Z",
+  "generatedAt": "2026-02-08T12:13:31.219Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 5,
-    "implemented": 5,
+    "total": 4,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Implement a single-page Valentine proposal experience in the React frontend that matches the provided HTML/CSS/JS layout and copy: full-viewport pink/red gradient background, centered white rounded card, top image, emoji row, heading “Hey Saesha 💖”, proposal paragraph, and two buttons “YES 💕” and “NO 🙈”.",
+        "id": "REQ-18",
+        "summary": "Add the 6 newly uploaded images as static frontend assets and ensure they are included in the build output with these exact filenames: IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, IMG-20260208-WA0005-5.jpg, IMG-20260208-WA0008-2.jpg, IMG-20260208-WA0010-2.jpg, IMG-20260208-WA0005-6.jpg.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/public/assets/IMG-20260208-WA0008-1.jpg",
+          "frontend/public/assets/IMG-20260208-WA0010-1.jpg",
+          "frontend/public/assets/IMG-20260208-WA0005-5.jpg",
+          "frontend/public/assets/IMG-20260208-WA0008-2.jpg",
+          "frontend/public/assets/IMG-20260208-WA0010-2.jpg",
+          "frontend/public/assets/IMG-20260208-WA0005-6.jpg"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Keep the existing proposal page layout and interactions intact, but update the photo grid under the main /saesha.jpg image to display all 6 newly uploaded images as the smaller tiles (same grid style/spacing/rounded corners). Use a 2-column grid with 3 rows of small tiles under the main image (main image still spans both columns).",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/App.tsx",
-          "frontend/src/main.tsx"
+          "frontend/src/components/StaticPhotoTile.tsx"
         ],
         "matchedFiles": [
           "frontend/src/App.tsx",
-          "frontend/src/main.tsx"
+          "frontend/src/components/StaticPhotoTile.tsx"
         ]
       },
       {
-        "id": "REQ-2",
-        "summary": "Recreate the “NO” button playful interaction: when the user hovers over or clicks the NO button, it moves to a random nearby position and the main text area updates by cycling through the provided funny lines, including embedding the provided GIF URL.",
+        "id": "REQ-20",
+        "summary": "Remove the in-page local photo upload functionality and its UI/state from the proposal page now that the grid is fully static: remove the hidden <input type=\"file\"> element, the \"Add photos/Replace photos\" button, the clear button, and any related local preview state usage in frontend/src/App.tsx. If the local preview hook is no longer used anywhere, remove its import/usage and clean up any now-unused code.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/useLocalPhotoTilePreviews.ts"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/useLocalPhotoTilePreviews.ts"
         ]
       },
       {
-        "id": "REQ-3",
-        "summary": "Recreate the “YES” button success state: clicking YES replaces the card content with the provided celebration emojis, heading, and message ending with “Forever yours, Varun ❤️”.",
+        "id": "REQ-21",
+        "summary": "Preserve graceful fallback behavior for missing images: if any of the static photo assets (including /saesha.jpg) fail to load, render a visually consistent pink-themed placeholder tile that does not break the grid layout.",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/components/StaticPhotoTile.tsx",
           "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation (full width, rounded corners). If the image file is not present, show a graceful fallback placeholder area without breaking layout.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/saesha.jpg",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Use a coherent romantic visual theme consistent with the provided snippet (warm pink/red gradient, rounded card, soft shadows, modern friendly typography) and apply it consistently using the project’s Tailwind + component styling conventions.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/index.html",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/index.html",
+          "frontend/src/components/StaticPhotoTile.tsx",
           "frontend/src/App.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
-    "build-template/Dockerfile",
-    "build-template/LICENSE",
-    "build-template/README.md",
-    "build-template/deploy.sh",
-    "build-template/icp.yaml",
-    "build-template/package.json",
-    "build-template/pnpm-lock.yaml",
-    "build-template/pnpm-workspace.yaml",
-    "build-template/scripts/prune-unused-images.js",
-    "build-template/scripts/resize-images.js",
-    "build-template/src/backend/canister.yaml",
-    "build-template/src/backend/system-idl/aaaaa-aa.did",
-    "build-template/src/frontend/canister.yaml",
-    "build-template/src/frontend/components.json",
-    "build-template/src/frontend/env.json",
-    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
-    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
-    "build-template/src/frontend/eslint.config.js",
-    "build-template/src/frontend/package.json",
-    "build-template/src/frontend/postcss.config.js",
-    "build-template/src/frontend/src/components/ui/accordion.tsx",
-    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
-    "build-template/src/frontend/src/components/ui/alert.tsx",
-    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
-    "build-template/src/frontend/src/components/ui/avatar.tsx",
-    "build-template/src/frontend/src/components/ui/badge.tsx",
-    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
-    "build-template/src/frontend/src/components/ui/button.tsx",
-    "build-template/src/frontend/src/components/ui/calendar.tsx",
-    "build-template/src/frontend/src/components/ui/card.tsx",
-    "build-template/src/frontend/src/components/ui/carousel.tsx",
-    "build-template/src/frontend/src/components/ui/chart.tsx",
-    "build-template/src/frontend/src/components/ui/checkbox.tsx",
-    "build-template/src/frontend/src/components/ui/collapsible.tsx",
-    "build-template/src/frontend/src/components/ui/command.tsx",
-    "build-template/src/frontend/src/components/ui/context-menu.tsx",
-    "build-template/src/frontend/src/components/ui/dialog.tsx",
-    "build-template/src/frontend/src/components/ui/drawer.tsx",
-    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
-    "build-template/src/frontend/src/components/ui/form.tsx",
-    "build-template/src/frontend/src/components/ui/hover-card.tsx",
-    "build-template/src/frontend/src/components/ui/input-otp.tsx",
-    "build-template/src/frontend/src/components/ui/input.tsx",
-    "build-template/src/frontend/src/components/ui/label.tsx",
-    "build-template/src/frontend/src/components/ui/menubar.tsx",
-    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
-    "build-template/src/frontend/src/components/ui/pagination.tsx",
-    "build-template/src/frontend/src/components/ui/popover.tsx",
-    "build-template/src/frontend/src/components/ui/progress.tsx",
-    "build-template/src/frontend/src/components/ui/radio-group.tsx",
-    "build-template/src/frontend/src/components/ui/resizable.tsx",
-    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
-    "build-template/src/frontend/src/components/ui/select.tsx",
-    "build-template/src/frontend/src/components/ui/separator.tsx",
-    "build-template/src/frontend/src/components/ui/sheet.tsx",
-    "build-template/src/frontend/src/components/ui/sidebar.tsx",
-    "build-template/src/frontend/src/components/ui/skeleton.tsx",
-    "build-template/src/frontend/src/components/ui/slider.tsx",
-    "build-template/src/frontend/src/components/ui/sonner.tsx",
-    "build-template/src/frontend/src/components/ui/switch.tsx",
-    "build-template/src/frontend/src/components/ui/table.tsx",
-    "build-template/src/frontend/src/components/ui/tabs.tsx",
-    "build-template/src/frontend/src/components/ui/textarea.tsx",
-    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
-    "build-template/src/frontend/src/components/ui/toggle.tsx",
-    "build-template/src/frontend/src/components/ui/tooltip.tsx",
-    "build-template/src/frontend/src/hooks/use-mobile.tsx",
-    "build-template/src/frontend/src/lib/utils.ts",
-    "build-template/src/frontend/tsconfig.json",
-    "build-template/src/frontend/vite.config.js",
-    "build-template/tsconfig.json",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.css",
-    "frontend/index.html",
     "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/config.ts",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/index.css",
-    "frontend/src/main.tsx",
-    "frontend/src/ui-summary.json",
-    "frontend/src/utils/StorageClient.ts",
-    "frontend/tailwind.config.js",
+    "frontend/src/components/StaticPhotoTile.tsx",
+    "frontend/src/hooks/useLocalPhotoTilePreviews.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

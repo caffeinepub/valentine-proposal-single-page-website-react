@@ -2,11 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-implement-a-single-page-valentine-proposal-experience-in-the-react-frontend-that-matches-the-provided-html-css-js-layout-and-copy-full-viewport-pink-red-gradient-background-centered-white-rounded-card-top-image-emoji-row-heading-hey-saesha-proposal-paragraph-and-two-buttons-yes-and-no",
-      "featureTitle": "Implement a single-page Valentine proposal experience in the React frontend that matches the provided HTML/CSS/JS layout and copy: full-viewport pink/red gradient background, centered white rounded card, top image, emoji row, heading “Hey Saesha 💖”, proposal paragraph, and two buttons “YES 💕” and “NO 🙈”.",
+      "featureId": "feature-keep-the-existing-proposal-page-layout-and-interactions-intact-but-update-the-photo-grid-under-the-main-saesha-jpg-image-to-display-all-6-newly-uploaded-images-as-the-smaller-tiles-same-grid-style-spacing-rounded-corners-use-a-2-column-grid-with-3-rows-of-small-tiles-under-the-main-image-main-image-still-spans-both-columns",
+      "featureTitle": "Keep the existing proposal page layout and interactions intact, but update the photo grid under the main /saesha.jpg image to display all 6 newly uploaded images as the smaller tiles (same grid style/spacing/rounded corners). Use a 2-column grid with 3 rows of small tiles under the main image (main image still spans both columns).",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/main.tsx"
+        "frontend/src/components/StaticPhotoTile.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,71 +16,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-19"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-recreate-the-no-button-playful-interaction-when-the-user-hovers-over-or-clicks-the-no-button-it-moves-to-a-random-nearby-position-and-the-main-text-area-updates-by-cycling-through-the-provided-funny-lines-including-embedding-the-provided-gif-url",
-      "featureTitle": "Recreate the “NO” button playful interaction: when the user hovers over or clicks the NO button, it moves to a random nearby position and the main text area updates by cycling through the provided funny lines, including embedding the provided GIF URL.",
+      "featureId": "feature-remove-the-in-page-local-photo-upload-functionality-and-its-ui-state-from-the-proposal-page-now-that-the-grid-is-fully-static-remove-the-hidden-input-type-file-element-the-add-photos-replace-photos-button-the-clear-button-and-any-related-local-preview-state-usage-in-frontend-src-app-tsx-if-the-local-preview-hook-is-no-longer-used-anywhere-remove-its-import-usage-and-clean-up-any-now-unused-code",
+      "featureTitle": "Remove the in-page local photo upload functionality and its UI/state from the proposal page now that the grid is fully static: remove the hidden <input type=\"file\"> element, the \"Add photos/Replace photos\" button, the clear button, and any related local preview state usage in frontend/src/App.tsx. If the local preview hook is no longer used anywhere, remove its import/usage and clean up any now-unused code.",
       "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-recreate-the-yes-button-success-state-clicking-yes-replaces-the-card-content-with-the-provided-celebration-emojis-heading-and-message-ending-with-forever-yours-varun",
-      "featureTitle": "Recreate the “YES” button success state: clicking YES replaces the card content with the provided celebration emojis, heading, and message ending with “Forever yours, Varun ❤️”.",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-the-top-card-image-as-a-static-frontend-asset-named-exactly-saesha-jpg-and-render-it-with-the-same-presentation-full-width-rounded-corners-if-the-image-file-is-not-present-show-a-graceful-fallback-placeholder-area-without-breaking-layout",
-      "featureTitle": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation (full width, rounded corners). If the image file is not present, show a graceful fallback placeholder area without breaking layout.",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-use-a-coherent-romantic-visual-theme-consistent-with-the-provided-snippet-warm-pink-red-gradient-rounded-card-soft-shadows-modern-friendly-typography-and-apply-it-consistently-using-the-project-s-tailwind-component-styling-conventions",
-      "featureTitle": "Use a coherent romantic visual theme consistent with the provided snippet (warm pink/red gradient, rounded card, soft shadows, modern friendly typography) and apply it consistently using the project’s Tailwind + component styling conventions.",
-      "files": [
-        "frontend/index.html",
         "frontend/src/App.tsx",
-        "frontend/src/index.css"
+        "frontend/src/hooks/useLocalPhotoTilePreviews.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -90,7 +35,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-preserve-graceful-fallback-behavior-for-missing-images-if-any-of-the-static-photo-assets-including-saesha-jpg-fail-to-load-render-a-visually-consistent-pink-themed-placeholder-tile-that-does-not-break-the-grid-layout",
+      "featureTitle": "Preserve graceful fallback behavior for missing images: if any of the static photo assets (including /saesha.jpg) fail to load, render a visually consistent pink-themed placeholder tile that does not break the grid layout.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/StaticPhotoTile.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
       ],
       "confidence": "high"
     }

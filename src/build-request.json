@@ -1,127 +1,92 @@
 {
   "kind": "build_request",
-  "title": "Valentine Proposal Single-Page Website (React)",
+  "title": "Add 6 new uploaded photos to the proposal grid (same layout) and remove local upload UI/state",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Implement a single-page Valentine proposal experience in the React frontend that matches the provided HTML/CSS/JS layout and copy: full-viewport pink/red gradient background, centered white rounded card, top image, emoji row, heading “Hey Saesha 💖”, proposal paragraph, and two buttons “YES 💕” and “NO 🙈”.",
+      "id": "REQ-18",
+      "text": "Add the 6 newly uploaded images as static frontend assets and ensure they are included in the build output with these exact filenames: IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, IMG-20260208-WA0005-5.jpg, IMG-20260208-WA0008-2.jpg, IMG-20260208-WA0010-2.jpg, IMG-20260208-WA0005-6.jpg.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "recent-uploads-1"
         ],
         "quotes": [
-          "<!DOCTYPE html><html lang=\"en\">...<title>Valentine Proposal 💘</title>...<h1>Hey Saesha 💖</h1>...<button id=\"yes\">YES 💕</button> <button id=\"no\">NO 🙈</button>"
+          "The user has uploaded 6 image(s): IMG-20260208-WA0008-1.jpg, IMG-20260208-WA0010-1.jpg, IMG-20260208-WA0005-5.jpg, IMG-20260208-WA0008-2.jpg, IMG-20260208-WA0010-2.jpg, IMG-20260208-WA0005-6.jpg."
         ]
       },
       "acceptanceCriteria": [
-        "Visiting the app shows a centered card on a full-height gradient background with typography, spacing, and rounded corners closely matching the provided design.",
-        "The card contains: an image at the top, the emoji line “🤗 🌸 💕”, the heading “Hey Saesha 💖”, and the proposal text ending with “Will you be my Valentine? 💘”.",
-        "Buttons display the exact labels “YES 💕” and “NO 🙈” and are visually distinct (pink primary YES, gray NO)."
+        "All 6 image files exist in the frontend static/public assets and are referenced by exact filename (case-sensitive).",
+        "A production build includes the 6 images (no missing asset 404s for these filenames)."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Recreate the “NO” button playful interaction: when the user hovers over or clicks the NO button, it moves to a random nearby position and the main text area updates by cycling through the provided funny lines, including embedding the provided GIF URL.",
+      "id": "REQ-19",
+      "text": "Keep the existing proposal page layout and interactions intact, but update the photo grid under the main /saesha.jpg image to display all 6 newly uploaded images as the smaller tiles (same grid style/spacing/rounded corners). Use a 2-column grid with 3 rows of small tiles under the main image (main image still spans both columns).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "recent-user-1"
         ],
         "quotes": [
-          "noBtn.addEventListener('mouseenter', moveNo);",
-          "noBtn.addEventListener('click', moveNo);",
-          "const funnyLines = [\"Are you sure? 😼\",\"Really?? 🙀\",\"Nice try 😏\",\"You can't escape 💕\",\"Come on… say YES 💖\"];",
-          "<img src=\"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif\" width=\"120\" />"
+          "Same layout"
         ]
       },
       "acceptanceCriteria": [
-        "Hovering over NO moves the button to a new random translated position; clicking NO does the same.",
-        "Each NO interaction updates the text area to show the next line in the funnyLines list (looping back after the last).",
-        "The updated text area includes the GIF loaded from https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif."
+        "The main /saesha.jpg image remains at the top of the card spanning both columns.",
+        "Exactly 6 smaller photo tiles render under the main image in a 2-column grid (3 rows), using the 6 new uploaded static assets.",
+        "YES/NO buttons behavior and the YES success screen remain unchanged."
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Recreate the “YES” button success state: clicking YES replaces the card content with the provided celebration emojis, heading, and message ending with “Forever yours, Varun ❤️”.",
+      "id": "REQ-20",
+      "text": "Remove the in-page local photo upload functionality and its UI/state from the proposal page now that the grid is fully static: remove the hidden <input type=\"file\"> element, the \"Add photos/Replace photos\" button, the clear button, and any related local preview state usage in frontend/src/App.tsx. If the local preview hook is no longer used anywhere, remove its import/usage and clean up any now-unused code.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "recent-user-1"
         ],
         "quotes": [
-          "yesBtn.addEventListener('click', () => { card.innerHTML = `\n        <div class=\"emoji\">🥰💖💍</div>\n        <h1>Yay! She said YES 💕</h1>\n        <p>...<b>Varun ❤️</b>"
+          "Same layout"
         ]
       },
       "acceptanceCriteria": [
-        "Clicking YES swaps the card content to the success message view.",
-        "The success view contains the emoji line “🥰💖💍”, the heading “Yay! She said YES 💕”, and the sign-off with “Varun ❤️”.",
-        "After YES is clicked, NO/YES buttons are no longer shown (since the content is replaced)."
+        "No upload/replace/clear photo controls are visible in the UI.",
+        "frontend/src/App.tsx no longer imports or uses useLocalPhotoTilePreviews, useRef for file input, lucide-react Upload/X icons, or any handlers solely for local photo uploads.",
+        "The app compiles with no unused imports/variables related to local photo upload."
       ]
     },
     {
-      "id": "REQ-4",
-      "text": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation (full width, rounded corners). If the image file is not present, show a graceful fallback placeholder area without breaking layout.",
+      "id": "REQ-21",
+      "text": "Preserve graceful fallback behavior for missing images: if any of the static photo assets (including /saesha.jpg) fail to load, render a visually consistent pink-themed placeholder tile that does not break the grid layout.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "recent-user-1"
         ],
         "quotes": [
-          "<img src=\"saesha.jpg\" alt=\"Us moment\" style=\"width:100%; border-radius:16px; margin-bottom:15px;\" />"
+          "Same layout"
         ]
       },
       "acceptanceCriteria": [
-        "The UI attempts to load and display /saesha.jpg at the top of the card with rounded corners and spacing similar to the provided HTML.",
-        "If /saesha.jpg cannot be loaded, the app displays a visually pleasant placeholder in the same area and the rest of the page still functions."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Use a coherent romantic visual theme consistent with the provided snippet (warm pink/red gradient, rounded card, soft shadows, modern friendly typography) and apply it consistently using the project’s Tailwind + component styling conventions.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "background: linear-gradient(135deg, #ff4d6d, #ff85a1);",
-          "border-radius: 20px;",
-          "box-shadow: 0 20px 50px rgba(0,0,0,0.25);",
-          "font-family: 'Poppins', sans-serif;"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Background uses a warm pink/red gradient and the card has rounded corners and a soft drop shadow.",
-        "Typography and spacing feel consistent across headings, body text, and buttons (no mismatched default fonts).",
-        "Design remains responsive and centered on common mobile and desktop viewport sizes."
+        "If a small-tile image fails to load, that tile shows a placeholder with the same sizing/rounded corners as an image tile.",
+        "If /saesha.jpg fails to load, the existing main-image placeholder behavior remains in place.",
+        "No broken layout or console errors caused by image load failures (beyond standard 404s when simulating missing assets)."
       ]
     }
   ],
   "constraints": [
-    "Frontend must not modify files under frontend/src/components/ui or any other immutable paths listed in SYSTEM_CONTEXT.",
-    "Do not introduce external databases or non-supported backend technologies; keep backend as Motoko single-actor (only if needed).",
-    "Keep all user-facing text in English."
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Backend must remain single-actor; all Motoko logic stays in backend/main.mo (no new backend services).",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "User accounts/authentication (Internet Identity)",
-    "Persisting responses (e.g., storing that YES was clicked)",
-    "Multi-page routing or complex navigation",
-    "Replacing the provided GIF URL with a different asset"
+    "Do not change the proposal copy, button labels, or the YES/NO interaction logic beyond what is required to remove the photo upload UI.",
+    "No backend storage or image upload persistence is needed.",
+    "No additional pages or routing changes."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

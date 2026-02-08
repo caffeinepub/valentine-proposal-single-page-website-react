@@ -66,11 +66,11 @@ export default {
                     border: 'oklch(var(--sidebar-border))',
                     ring: 'oklch(var(--sidebar-ring))'
                 },
-                valentine: {
-                    primary: 'oklch(var(--valentine-primary))',
-                    'primary-hover': 'oklch(var(--valentine-primary-hover))',
-                    secondary: 'oklch(var(--valentine-secondary))',
-                    accent: 'oklch(var(--valentine-accent))'
+                pink: {
+                    primary: 'oklch(var(--pink-primary))',
+                    'primary-hover': 'oklch(var(--pink-primary-hover))',
+                    secondary: 'oklch(var(--pink-secondary))',
+                    accent: 'oklch(var(--pink-accent))'
                 }
             },
             borderRadius: {
@@ -80,7 +80,7 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                valentine: '0 20px 50px rgba(0,0,0,0.25)'
+                pink: '0 25px 60px rgba(236, 72, 153, 0.20), 0 10px 25px rgba(244, 114, 182, 0.15)'
             },
             keyframes: {
                 'accordion-down': {
