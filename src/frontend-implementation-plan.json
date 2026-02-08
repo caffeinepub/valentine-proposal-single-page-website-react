@@ -1,0 +1,106 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Valentine Proposal Single-Page Website (React)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement the single-page Valentine proposal UI (gradient background, centered card, image, emojis, copy, and YES/NO buttons) to match the provided HTML/CSS/JS layout and text.",
+      "acceptanceCriteria": [
+        "Visiting the app shows a centered card on a full-height gradient background with typography, spacing, and rounded corners closely matching the provided design.",
+        "The card contains: an image at the top, the emoji line “🤗 🌸 💕”, the heading “Hey Saesha 💖”, and the proposal text ending with “Will you be my Valentine? 💘”.",
+        "Buttons display the exact labels “YES 💕” and “NO 🙈” and are visually distinct (pink primary YES, gray NO)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page Valentine proposal view (no routing): full-viewport gradient background, centered white rounded card, top image slot, emoji row, required heading and proposal copy, and distinct YES/NO buttons. If using any shadcn-ui elements for buttons/typography, verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure the app renders the new single-page App component cleanly and continues importing global styles needed for the Valentine page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement the playful NO interaction: move the NO button randomly on hover/click and cycle funny lines with the provided GIF in the main text area.",
+      "acceptanceCriteria": [
+        "Hovering over NO moves the button to a new random translated position; clicking NO does the same.",
+        "Each NO interaction updates the text area to show the next line in the funnyLines list (looping back after the last).",
+        "The updated text area includes the GIF loaded from https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add React state and event handlers to (1) randomize the NO button position within/near the card (using hover and click) and (2) cycle through the provided funny lines in order, looping, while rendering the provided external GIF within the updated text area."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement the YES success state that replaces the card content with the provided celebration emojis, heading, and message signed “Forever yours, Varun ❤️”.",
+      "acceptanceCriteria": [
+        "Clicking YES swaps the card content to the success message view.",
+        "The success view contains the emoji line “🥰💖💍”, the heading “Yay! She said YES 💕”, and the sign-off with “Varun ❤️”.",
+        "After YES is clicked, NO/YES buttons are no longer shown (since the content is replaced)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a YES-click success state that conditionally renders the success view content and hides/removes the proposal view (including both buttons) after YES is clicked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add the top image as a static asset named saesha.jpg and render it with rounded corners; include a graceful fallback if the image fails to load.",
+      "acceptanceCriteria": [
+        "The UI attempts to load and display /saesha.jpg at the top of the card with rounded corners and spacing similar to the provided HTML.",
+        "If /saesha.jpg cannot be loaded, the app displays a visually pleasant placeholder in the same area and the rest of the page still functions."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/saesha.jpg",
+          "operation": "create",
+          "description": "Add the static top-card image asset named exactly saesha.jpg so it is served at /saesha.jpg."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Render /saesha.jpg at the top of the card with full width and rounded corners, and implement an onError-driven fallback placeholder block that preserves the same layout spacing when the image cannot be loaded."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply a consistent romantic theme using Tailwind conventions: warm pink/red gradient, rounded card, soft shadow, and friendly modern typography with responsive centered layout.",
+      "acceptanceCriteria": [
+        "Background uses a warm pink/red gradient and the card has rounded corners and a soft drop shadow.",
+        "Typography and spacing feel consistent across headings, body text, and buttons (no mismatched default fonts).",
+        "Design remains responsive and centered on common mobile and desktop viewport sizes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create the global Tailwind CSS entry (tailwind base/components/utilities) and set a consistent global font stack aligned with the provided design (e.g., Poppins with sensible fallbacks)."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Add required font loading (e.g., Poppins) in the document head so the page typography matches the intended modern friendly style."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Refine Tailwind classes to consistently apply the romantic theme (gradient background, rounded card, soft shadow, button styling, and responsive spacing) across all states (default, NO-interaction text updates, YES success). If leveraging shadcn-ui styling conventions, verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

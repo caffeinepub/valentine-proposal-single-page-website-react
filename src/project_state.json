@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build a Valentine proposal single-page website (HTML/CSS/JS) matching the provided design and interactions.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-implement-a-single-page-valentine-proposal-experience-in-the-react-frontend-that-matches-the-provided-html-css-js-layout-and-copy-full-viewport-pink-red-gradient-background-centered-white-rounded-card-top-image-emoji-row-heading-hey-saesha-proposal-paragraph-and-two-buttons-yes-and-no",
+      "title": "Implement a single-page Valentine proposal experience in the React frontend that matches the provided HTML/CSS/JS layout and copy: full-viewport pink/red gradient background, centered white rounded card, top image, emoji row, heading “Hey Saesha 💖”, proposal paragraph, and two buttons “YES 💕” and “NO 🙈”.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-recreate-the-no-button-playful-interaction-when-the-user-hovers-over-or-clicks-the-no-button-it-moves-to-a-random-nearby-position-and-the-main-text-area-updates-by-cycling-through-the-provided-funny-lines-including-embedding-the-provided-gif-url",
+      "title": "Recreate the “NO” button playful interaction: when the user hovers over or clicks the NO button, it moves to a random nearby position and the main text area updates by cycling through the provided funny lines, including embedding the provided GIF URL.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-recreate-the-yes-button-success-state-clicking-yes-replaces-the-card-content-with-the-provided-celebration-emojis-heading-and-message-ending-with-forever-yours-varun",
+      "title": "Recreate the “YES” button success state: clicking YES replaces the card content with the provided celebration emojis, heading, and message ending with “Forever yours, Varun ❤️”.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-top-card-image-as-a-static-frontend-asset-named-exactly-saesha-jpg-and-render-it-with-the-same-presentation-full-width-rounded-corners-if-the-image-file-is-not-present-show-a-graceful-fallback-placeholder-area-without-breaking-layout",
+      "title": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation (full width, rounded corners). If the image file is not present, show a graceful fallback placeholder area without breaking layout.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-a-coherent-romantic-visual-theme-consistent-with-the-provided-snippet-warm-pink-red-gradient-rounded-card-soft-shadows-modern-friendly-typography-and-apply-it-consistently-using-the-project-s-tailwind-component-styling-conventions",
+      "title": "Use a coherent romantic visual theme consistent with the provided snippet (warm pink/red gradient, rounded card, soft shadows, modern friendly typography) and apply it consistently using the project’s Tailwind + component styling conventions.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create the Valentine proposal website using the provided HTML/CSS/JS (card layout, image, YES/NO buttons with moving NO behavior and YES success message).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Valentine Proposal Single-Page Website (React)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

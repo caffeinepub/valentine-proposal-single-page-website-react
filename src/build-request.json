@@ -1,0 +1,127 @@
+{
+  "kind": "build_request",
+  "title": "Valentine Proposal Single-Page Website (React)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a single-page Valentine proposal experience in the React frontend that matches the provided HTML/CSS/JS layout and copy: full-viewport pink/red gradient background, centered white rounded card, top image, emoji row, heading “Hey Saesha 💖”, proposal paragraph, and two buttons “YES 💕” and “NO 🙈”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "<!DOCTYPE html><html lang=\"en\">...<title>Valentine Proposal 💘</title>...<h1>Hey Saesha 💖</h1>...<button id=\"yes\">YES 💕</button> <button id=\"no\">NO 🙈</button>"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visiting the app shows a centered card on a full-height gradient background with typography, spacing, and rounded corners closely matching the provided design.",
+        "The card contains: an image at the top, the emoji line “🤗 🌸 💕”, the heading “Hey Saesha 💖”, and the proposal text ending with “Will you be my Valentine? 💘”.",
+        "Buttons display the exact labels “YES 💕” and “NO 🙈” and are visually distinct (pink primary YES, gray NO)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Recreate the “NO” button playful interaction: when the user hovers over or clicks the NO button, it moves to a random nearby position and the main text area updates by cycling through the provided funny lines, including embedding the provided GIF URL.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "noBtn.addEventListener('mouseenter', moveNo);",
+          "noBtn.addEventListener('click', moveNo);",
+          "const funnyLines = [\"Are you sure? 😼\",\"Really?? 🙀\",\"Nice try 😏\",\"You can't escape 💕\",\"Come on… say YES 💖\"];",
+          "<img src=\"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif\" width=\"120\" />"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hovering over NO moves the button to a new random translated position; clicking NO does the same.",
+        "Each NO interaction updates the text area to show the next line in the funnyLines list (looping back after the last).",
+        "The updated text area includes the GIF loaded from https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Recreate the “YES” button success state: clicking YES replaces the card content with the provided celebration emojis, heading, and message ending with “Forever yours, Varun ❤️”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "yesBtn.addEventListener('click', () => { card.innerHTML = `\n        <div class=\"emoji\">🥰💖💍</div>\n        <h1>Yay! She said YES 💕</h1>\n        <p>...<b>Varun ❤️</b>"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking YES swaps the card content to the success message view.",
+        "The success view contains the emoji line “🥰💖💍”, the heading “Yay! She said YES 💕”, and the sign-off with “Varun ❤️”.",
+        "After YES is clicked, NO/YES buttons are no longer shown (since the content is replaced)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add the top card image as a static frontend asset named exactly \"saesha.jpg\" and render it with the same presentation (full width, rounded corners). If the image file is not present, show a graceful fallback placeholder area without breaking layout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "<img src=\"saesha.jpg\" alt=\"Us moment\" style=\"width:100%; border-radius:16px; margin-bottom:15px;\" />"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The UI attempts to load and display /saesha.jpg at the top of the card with rounded corners and spacing similar to the provided HTML.",
+        "If /saesha.jpg cannot be loaded, the app displays a visually pleasant placeholder in the same area and the rest of the page still functions."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Use a coherent romantic visual theme consistent with the provided snippet (warm pink/red gradient, rounded card, soft shadows, modern friendly typography) and apply it consistently using the project’s Tailwind + component styling conventions.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "background: linear-gradient(135deg, #ff4d6d, #ff85a1);",
+          "border-radius: 20px;",
+          "box-shadow: 0 20px 50px rgba(0,0,0,0.25);",
+          "font-family: 'Poppins', sans-serif;"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Background uses a warm pink/red gradient and the card has rounded corners and a soft drop shadow.",
+        "Typography and spacing feel consistent across headings, body text, and buttons (no mismatched default fonts).",
+        "Design remains responsive and centered on common mobile and desktop viewport sizes."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend must not modify files under frontend/src/components/ui or any other immutable paths listed in SYSTEM_CONTEXT.",
+    "Do not introduce external databases or non-supported backend technologies; keep backend as Motoko single-actor (only if needed).",
+    "Keep all user-facing text in English."
+  ],
+  "nonGoals": [
+    "User accounts/authentication (Internet Identity)",
+    "Persisting responses (e.g., storing that YES was clicked)",
+    "Multi-page routing or complex navigation",
+    "Replacing the provided GIF URL with a different asset"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

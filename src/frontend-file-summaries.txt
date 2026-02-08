@@ -1,0 +1,6 @@
+{
+  "frontend/src/App.tsx": "Single-page Valentine proposal component with interactive YES/NO buttons, where NO moves randomly on hover/click and cycles through funny messages, and YES displays a success message.",
+  "frontend/src/index.css": "Global styles with Poppins font family, Tailwind directives, and custom Valentine theme OKLCH color tokens for the romantic pink/red gradient design.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom Valentine color palette (primary, secondary, accent) and valentine shadow for the romantic card design.",
+  "frontend/index.html": "HTML entry point with updated title \"Valentine Proposal 💘\" and Google Fonts preconnect links for Poppins font family."
+}
